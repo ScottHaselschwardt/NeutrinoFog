@@ -82,14 +82,16 @@ def NuFloor_1event(mvals,Nuc,nths=100):
             Nw = Exposures[j]*trapz(WIMPFuncs.dRdE(Evals,m,1.0e-45,Nuc,\
                     WIMPFuncs.C_SI,LabFuncs.FormFactorHelm,WIMPFuncs.MeanInverseSpeed_SHM),Evals)
             if Nw>0:
-                DL[i,j] = 2.3*1.0e-45/Nw
+                DL[i,j] = 3.28*1.0e-45/Nw
+                #DL[i,j] = 2.3*1.0e-45/Nw
     DL[DL<0] = inf
     DL[DL==0] = inf
 
     nu1 = amin(DL,1)
     return nu1
 
-def NuFloor_Nevent(mvals,Nuc,n_nu_evts=1.0,nths=100):
+def NuFloor_Nevent(mvals,Nuc,n_nu_evts=1,nths=100):
+    fc_sens = [ 2.44, 3.28, 3.94, 4.42, 4.83, 5.18 ]
     # Load neutrino fluxes
     Names,solar,E_nu_all,Flux_all,Flux_norm,Flux_err = NeutrinoFuncs.GetNuFluxes(0.0)
     n_nu = shape(Flux_all)[0]
@@ -113,7 +115,7 @@ def NuFloor_Nevent(mvals,Nuc,n_nu_evts=1.0,nths=100):
             Nw = Exposures[j]*trapz(WIMPFuncs.dRdE(Evals,m,1.0e-45,Nuc,\
                     WIMPFuncs.C_SI,LabFuncs.FormFactorHelm,WIMPFuncs.MeanInverseSpeed_SHM),Evals)
             if Nw>0:
-                DL[i,j] = 2.3*1.0e-45/Nw
+                DL[i,j] = fc_sens[n_nu_evts]*1.0e-45/Nw
     DL[DL<0] = inf
     DL[DL==0] = inf
 
