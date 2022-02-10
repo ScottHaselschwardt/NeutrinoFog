@@ -30,7 +30,7 @@ def MinimumWIMPSpeed(E_r,A,m_chi,delta=0):
     return v_min
 
 #---------------------------------- E_max -------------------------------------#
-def MaxWIMPEnergy(A,m_chi,v_lab=245.6,v_esc=533.0):
+def MaxWIMPEnergy(A,m_chi,v_lab=238,v_esc=544.0):
     # A = nucleus mass number
     # v_lab = Lab velocity in km/s
     # m_chi = Wimp mass in GeV
@@ -51,7 +51,7 @@ def MinimumWIMPSpeed(E_r,A,m_chi,delta=0):
     return v_min
 
 #-------------------- Mean Inverse Speed (for Gaussian f(v)) --------------------------#
-def MeanInverseSpeed_SHM(v_min,sig_v=167.0,v_esc=533.0,v_lab=245.6):
+def MeanInverseSpeed_SHM(v_min,sig_v=168.3,v_esc=544.0,v_lab=238.0):
     N_esc = erf(v_esc/(sqrt(2.0)*sig_v))\
             -sqrt(2.0/pi)*(v_esc/sig_v)*exp(-v_esc**2.0/(2.0*sig_v**2.0))
 
