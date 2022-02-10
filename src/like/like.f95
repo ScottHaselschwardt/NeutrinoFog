@@ -81,7 +81,7 @@ subroutine DiscoveryLimit(m_vals,nm,sigma_min,sigma_max,ns,verbose,DL)
 				! Test statistic
 				D01 = -2.0*(L1-L0)
         !write(*,*) j,sigma_p,D01
-				if (D01.ge.9.0d0) then ! Median 3sigma detection -> D = 9
+				if (D01.ge.9.0d0) then ! Median 3sigma detection -> D = 9, 4sig=16, 5sig=25
 					! Do interpolation to find discovery limit cross section
 					DL(im) = 10.0d0**(interp1D((/D_prev,D01/),(/log10(s_prev),log10(sigma_p)/),2,9.0d0))
 					exit

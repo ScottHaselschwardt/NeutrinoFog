@@ -180,30 +180,35 @@ def CurvedArrow(x0,x1,y0,y1,alpha=0.7,color='orangered',connectionstyle="arc3,ra
     return
 
 
-def SILimits(ax,Annotations=True,facecolor=[0.0, 0.62, 0.38],edgecolor='darkgreen',alph=1):
+def SILimits(ax,Annotations=True,Fills=True,facecolor=[0.0, 0.62, 0.38],edgecolor='darkgreen',alph=1):
     ymax = ax.get_ylim()[1]
     plt.sca(ax)
     pek = line_background(5,'k')
 
     # Expt limits
     CRESST = loadtxt("../data/WIMPLimits/SI/CRESST.txt")
-    plt.fill_between(CRESST[:,0], CRESST[:,1],edgecolor=None,y2=ymax,facecolor=[0.74, 0.56, 0.56])
+    if Fills:
+        plt.fill_between(CRESST[:,0], CRESST[:,1],edgecolor=None,y2=ymax,facecolor=[0.74, 0.56, 0.56])
     plt.plot(CRESST[:,0], CRESST[:,1],color=[0.8, 0.25, 0.33],linewidth=3,path_effects=pek)
 
     CDMSLite = loadtxt("../data/WIMPLimits/SI/CDMSLite.txt")
-    plt.fill_between(CDMSLite[:,0], CDMSLite[:,1],edgecolor=None,y2=ymax,facecolor=[0.27, 0.51, 0.71])
+    if Fills:
+        plt.fill_between(CDMSLite[:,0], CDMSLite[:,1],edgecolor=None,y2=ymax,facecolor=[0.27, 0.51, 0.71])
     plt.plot(CDMSLite[:,0], CDMSLite[:,1],color="blue",linewidth=3,path_effects=pek)
 
     DarkSide = loadtxt("../data/WIMPLimits/SI/DarkSide.txt")
-    plt.fill_between(DarkSide[:,0], DarkSide[:,1],edgecolor=None,y2=ymax,facecolor="forestgreen",alpha=0.5)
+    if Fills:
+        plt.fill_between(DarkSide[:,0], DarkSide[:,1],edgecolor=None,y2=ymax,facecolor="forestgreen",alpha=0.5)
     plt.plot(DarkSide[:,0], DarkSide[:,1],color="green",linewidth=3,path_effects=pek)
 
     PandaX = loadtxt("../data/WIMPLimits/SI/PandaX.txt")
-    plt.fill_between(PandaX[:,0], PandaX[:,1],edgecolor=None,y2=ymax,facecolor="teal")
+    if Fills:
+        plt.fill_between(PandaX[:,0], PandaX[:,1],edgecolor=None,y2=ymax,facecolor="teal")
     plt.plot(PandaX[:,0], PandaX[:,1],color="navy",linewidth=3,path_effects=pek)
 
     XENON1T = loadtxt("../data/WIMPLimits/SI/XENON1T.txt")
-    plt.fill_between(XENON1T[:,0], XENON1T[:,1],edgecolor=None,y2=ymax,facecolor=facecolor,alpha=0.9)
+    if Fills:
+        plt.fill_between(XENON1T[:,0], XENON1T[:,1],edgecolor=None,y2=ymax,facecolor=facecolor,alpha=0.9)
     plt.plot(XENON1T[:,0], XENON1T[:,1],color=edgecolor,linewidth=3,path_effects=pek)
 
     dat = loadtxt('../data/WIMPLimits/SI/LUX.txt')

@@ -23,7 +23,7 @@ import shlex
 import subprocess
 import pprint
 
-def Floor_2D(data,filt=True,filt_width=3,Ex_crit=1e10):
+def Floor_2D(data,filt=True,filt_width=3,Ex_crit=1e10,slope_idx=2.0):
     sig = data[1:,0]
     m = data[0,1:]
     n = size(m)
@@ -48,14 +48,14 @@ def Floor_2D(data,filt=True,filt_width=3,Ex_crit=1e10):
     #    DY[:,j] = gaussian_filter1d(DY[:,j],filt_width)
     for j in range(0,n):
         for i in range(0,ns):
-            if DY[ns-1-i,j]<=-2.0:
+            if DY[ns-1-i,j]<=-slope_idx:
                 i0 = ns-1-i
                 i1 = i0+10
-                NUFLOOR[j] = 10.0**interp(-2,DY[i0:i1+1,j],log10(sig[i0:i1+1]))
+                NUFLOOR[j] = 10.0**interp(-slope_idx,DY[i0:i1+1,j],log10(sig[i0:i1+1]))
                 DY[ns-1-i:-1,j] = nan
                 break
     DY = -DY
-    DY[DY<2] = 2
+    DY[DY<slope_idx] = slope_idx
     return m,sig,NUFLOOR,DY
 
 def NuFloor_1event(mvals,Nuc,nths=100):
@@ -71,6 +71,37 @@ def NuFloor_1event(mvals,Nuc,nths=100):
     cumR = flipud(cumtrapz(flipud(E_ths),flipud(R)))
     cumR = append(cumR,cumR[-1])
     Exposures = 1.0/cumR
+
+    nm = size(mvals)
+
+    DL = zeros(shape=(nm,nths))
+    for j in range(0,nths-10):
+        Evals = logspace(log10(E_ths[j]),log10(1000.0),200)
+        for i in range(0,nm):
+            m = mvals[i]
+            Nw = Exposures[j]*trapz(WIMPFuncs.dRdE(Evals,m,1.0e-45,Nuc,\
+                    WIMPFuncs.C_SI,LabFuncs.FormFactorHelm,WIMPFuncs.MeanInverseSpeed_SHM),Evals)
+            if Nw>0:
+                DL[i,j] = 2.3*1.0e-45/Nw
+    DL[DL<0] = inf
+    DL[DL==0] = inf
+
+    nu1 = amin(DL,1)
+    return nu1
+
+def NuFloor_Nevent(mvals,Nuc,n_nu_evts=1.0,nths=100):
+    # Load neutrino fluxes
+    Names,solar,E_nu_all,Flux_all,Flux_norm,Flux_err = NeutrinoFuncs.GetNuFluxes(0.0)
+    n_nu = shape(Flux_all)[0]
+    E_ths = logspace(log10(0.0001),log10(100.0),nths)
+    t = 0
+
+    R = zeros(shape=nths)
+    for i in range(0,n_nu):
+        R = R+NeutrinoFuncs.dRdE(E_ths,t,solar[i],E_nu_all[i,:],Flux_all[i,:],Nuc)
+    cumR = flipud(cumtrapz(flipud(E_ths),flipud(R)))
+    cumR = append(cumR,cumR[-1])
+    Exposures = n_nu_evts/cumR
 
     nm = size(mvals)
 
