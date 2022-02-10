@@ -127,19 +127,19 @@ whichsolar[0:9] = True
 
 # Neutrino max energies (MeV):
 NuMaxEnergy = array([0.42341,1.44,18.765,0.3843,0.8613,16.34,1.193,\
-                    1.7285,1.7365,91.201,1.0e4,
+                    1.7285,1.7365,86,1.0e4,
                     4.54,2.33,1.3572,\
                     1.1418e1])
 # Neutrino fluxes (cm-2 s-1 MeV-1) and uncertainties (%):
 # (from Vinyoles et al (2017) Barcelona GS98 SSM) + Bergstrom global analysis
 # Geo from 1301.0365
 # Reactor from Plot_GeoReactorFlux.ipynb
-NuFlux = array([5.98e10,1.44e8,7.98e3,4.93e8,4.50e9,5.16e6,\
-                        2.78e8,2.05e8,5.29e6,85.7,10.7,\
+NuFlux = array([5.98e10,1.44e8,7.98e3,4.90e8,4.50e9,5.25e6,\
+                        2.78e8,2.05e8,5.29e6,85.7,10.5,\
                         4.34e6,4.23e6,20.54e6,\
                         3.06e6])
-NuUnc = array([0.006, 0.01, 0.3,0.06, 0.06, 0.02, 0.15 ,\
-                        0.17 ,0.2 ,0.5, 0.25,\
+NuUnc = array([0.006, 0.01, 0.3,0.02, 0.02, 0.4, 0.15 ,\
+                        0.17 ,0.2 ,0.5, 0.2,\
                         0.2,0.257,0.168,\
                         0.08])
 
