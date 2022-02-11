@@ -189,59 +189,59 @@ def SILimits(ax,Annotations=True,Fills=True,facecolor=[0.0, 0.62, 0.38],edgecolo
     CRESST = loadtxt("../data/WIMPLimits/SI/CRESST.txt")
     if Fills:
         plt.fill_between(CRESST[:,0], CRESST[:,1],edgecolor=None,y2=ymax,facecolor=[0.74, 0.56, 0.56])
-    plt.plot(CRESST[:,0], CRESST[:,1],color=[0.8, 0.25, 0.33],linewidth=3,path_effects=pek)
+    plt.plot(CRESST[:,0], CRESST[:,1],color=[0.8, 0.25, 0.33],linewidth=3)#,path_effects=pek)
 
     CDMSLite = loadtxt("../data/WIMPLimits/SI/CDMSLite.txt")
     if Fills:
         plt.fill_between(CDMSLite[:,0], CDMSLite[:,1],edgecolor=None,y2=ymax,facecolor=[0.27, 0.51, 0.71])
-    plt.plot(CDMSLite[:,0], CDMSLite[:,1],color="blue",linewidth=3,path_effects=pek)
+    plt.plot(CDMSLite[:,0], CDMSLite[:,1],color="blue",linewidth=3)#,path_effects=pek)
 
     DarkSide = loadtxt("../data/WIMPLimits/SI/DarkSide.txt")
     if Fills:
         plt.fill_between(DarkSide[:,0], DarkSide[:,1],edgecolor=None,y2=ymax,facecolor="forestgreen",alpha=0.5)
-    plt.plot(DarkSide[:,0], DarkSide[:,1],color="green",linewidth=3,path_effects=pek)
+    plt.plot(DarkSide[:,0], DarkSide[:,1],color="green",linewidth=3)#,path_effects=pek)
 
     PandaX = loadtxt("../data/WIMPLimits/SI/PandaX.txt")
     if Fills:
         plt.fill_between(PandaX[:,0], PandaX[:,1],edgecolor=None,y2=ymax,facecolor="teal")
-    plt.plot(PandaX[:,0], PandaX[:,1],color="navy",linewidth=3,path_effects=pek)
+    plt.plot(PandaX[:,0], PandaX[:,1],color="navy",linewidth=3)#,path_effects=pek)
 
     XENON1T = loadtxt("../data/WIMPLimits/SI/XENON1T.txt")
     if Fills:
         plt.fill_between(XENON1T[:,0], XENON1T[:,1],edgecolor=None,y2=ymax,facecolor=facecolor,alpha=0.9)
-    plt.plot(XENON1T[:,0], XENON1T[:,1],color=edgecolor,linewidth=3,path_effects=pek)
+    plt.plot(XENON1T[:,0], XENON1T[:,1],color=edgecolor,linewidth=3)#,path_effects=pek)
 
     dat = loadtxt('../data/WIMPLimits/SI/LUX.txt')
-    plt.plot(dat[:,0], dat[:,1],color='crimson',linewidth=3,path_effects=pek)
+    plt.plot(dat[:,0], dat[:,1],color='crimson',linewidth=3)#,path_effects=pek)
 
 
     EDELWEISS = loadtxt("../data/WIMPLimits/SI/EDELWEISS.txt")
-    plt.plot(EDELWEISS[:,0], EDELWEISS[:,1],color=[0.67, 0.31, 0.32],linewidth=3,path_effects=pek)
+    plt.plot(EDELWEISS[:,0], EDELWEISS[:,1],color=[0.67, 0.31, 0.32],linewidth=3)#,path_effects=pek)
 
     PICO60 = loadtxt("../data/WIMPLimits/SI/PICO60.txt")
-    plt.plot(PICO60[:,0], PICO60[:,1],color=[0.5, 0.0, 0.13],linewidth=3,path_effects=pek)
+    plt.plot(PICO60[:,0], PICO60[:,1],color=[0.5, 0.0, 0.13],linewidth=3)#,path_effects=pek)
 
     PICO2L = loadtxt("../data/WIMPLimits/SI/PICO2L.txt")
-    plt.plot(PICO2L[:,0], PICO2L[:,1],color=[0.5, 0.0, 0.13],linewidth=3,path_effects=pek)
+    plt.plot(PICO2L[:,0], PICO2L[:,1],color=[0.5, 0.0, 0.13],linewidth=3)#,path_effects=pek)
 
     DAMA1 = loadtxt("../data/WIMPLimits/SI/DAMA1.txt")
     DAMA2 = loadtxt("../data/WIMPLimits/SI/DAMA2.txt")
     plt.fill_between(DAMA1[:,0], DAMA1[:,1],edgecolor=None,y2=1.0e-45,facecolor='forestgreen')
     plt.fill_between(DAMA2[:,0], DAMA2[:,1],edgecolor=None,y2=1.0e-45,facecolor='forestgreen')
-    plt.plot(DAMA1[:,0], DAMA1[:,1],color='darkslategray',linewidth=3,path_effects=pek)
-    plt.plot(DAMA2[:,0], DAMA2[:,1],color='darkslategray',linewidth=3,path_effects=pek)
+    plt.plot(DAMA1[:,0], DAMA1[:,1],color='darkslategray',linewidth=3)#,path_effects=pek)
+    plt.plot(DAMA2[:,0], DAMA2[:,1],color='darkslategray',linewidth=3)#,path_effects=pek)
 
     COSINE = loadtxt("../data/WIMPLimits/SI/COSINE-100.txt")
-    plt.plot(COSINE[:,0], COSINE[:,1],color="gold",linewidth=3,path_effects=pek)
+    plt.plot(COSINE[:,0], COSINE[:,1],color="gold",linewidth=3)#,path_effects=pek)
 
     dat = loadtxt('../data/WIMPLimits/SI/DEAP-3600.txt')
-    plt.plot(dat[:,0], dat[:,1],color='#4ff09d',linewidth=3,path_effects=pek)
+    plt.plot(dat[:,0], dat[:,1],color='#4ff09d',linewidth=3)#,path_effects=pek)
 
     dat = loadtxt('../data/WIMPLimits/SI/XENON1T-Migdal.txt')
     plt.plot(dat[:,0],dat[:,1],':',lw=3,color='darkgreen',alpha=0.8)
 
     dat = loadtxt('../data/WIMPLimits/SI/NEWS-G.txt')
-    plt.plot(dat[:,0], dat[:,1],color='m',linewidth=3,path_effects=pek)
+    plt.plot(dat[:,0], dat[:,1],color='m',linewidth=3)#,path_effects=pek)
     return
 
 
