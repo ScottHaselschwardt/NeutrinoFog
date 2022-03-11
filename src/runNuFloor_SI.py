@@ -10,9 +10,9 @@ from LabFuncs import FormFactorHelm
 from Like import runDL_2D
 #==============================================================================#
 ne = 50 # number of energy bins (anything >50 is accurate enough)
-nm = 200 # number of mass points
-n_ex = 500 # number of exposure points (I wouldn't go below 250)
-ns = 500 # number of cross section points (I wouldn't go below 250)
+nm = 300 # number of mass points
+n_ex = 700 # number of exposure points (I wouldn't go below 250)
+ns = 700 # number of cross section points (I wouldn't go below 250)
 ex_min = 1e-5 # minimum exposure
 ex_max = 1e19 # maximum exposure
 m_vals = logspace(log10(0.1),log10(1.0e4),nm) # mass points
@@ -22,7 +22,7 @@ Flux_err = NuUnc # See Params.py
 E_th = 1.0e-4 # Threshold
 E_max = 200.0 # Max recoil energy
 sigma_min = 1e-50 # Minimum cross section to scan over
-sigma_max = 1e-44 # Maximum cross section to scan over
+sigma_max = 1e-41 # Maximum cross section to scan over
 inp = 'NuFloor'+sys.argv[1]+'_detailed_SI' # Filename to save data to
 #==============================================================================#
 # This is a bit ugly but works for now
